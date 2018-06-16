@@ -1,0 +1,68 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	lang="en"> 
+
+	<h:head>
+		<meta charset="UTF-8" />
+  		<title>WebDeprecia - Cadastro de patromônios</title>
+  		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
+	</h:head>
+	<h:body>
+		<div class="container">
+	        <img src="logo.png" />
+			<h4  class="bg-danger" style="color:blue;">Cadastrar de patrimônios</h4>
+			<h:form>
+				<p:messages id="msg" closable="true" />
+				<h:inputHidden value="#{patrimonioMB.patrimonio.numero}"/>
+				<p:panelGrid columns="2">
+					<p:outputLabel value="Tipo do bem:" for="tipo-do-bem"/>
+					  <p:inputText maxlength="20" id="tipo-do-bem" required="true" value="#{patrimonioMB.patrimonio.tipo_do_bem}" 
+								 style="width:180px" />
+					<p:outputLabel value="Descrição:"   for="descricao"/>
+					  <p:inputText maxlength="40" id="descricao" required="true" value="#{patrimonioMB.patrimonio.descricao}" 
+								 style="width:300px" />
+					<p:outputLabel value="Marca:" for="marca"/>
+					  <p:inputText maxlength="30" id="marca" required="true" value="#{patrimonioMB.patrimonio.marca}" 
+								 style="width:250px" />
+					<p:outputLabel value="Preço de Aquisição:" for="preco-de-aquisicao" /> 
+					  <p:inputText id="preco-de-aquisicao" required="true" value="#{patrimonioMB.patrimonio.preco_compra}" style="text-align:right"> 
+							<f:convertNumber minFractionDigits="2"/>
+					  </p:inputText>
+					<p:outputLabel value="Data da Aquisição:" for="data-da-aquisicao"  />  
+					  <p:calendar id="data-da-aquisicao" required="true" value="#{patrimonioMB.patrimonio.data_compra}"  
+								 style="width:80px" />
+					<p:outputLabel value="Vida útil (em anos):" for="vida-util"/> 
+					  <p:inputText  maxlength="4" id="vida-util" required="true" value="#{patrimonioMB.patrimonio.vida_util}" 
+								 style="width:50px" />
+					<p:outputLabel value="Situação do bem:"  />  
+						<p:selectOneMenu value="#{patrimonioMB.patrimonio.situacao_do_bem}">
+							<f:selectItem itemValue="Novo"  itemLabel="Novo" />
+							<f:selectItem itemValue="Usado" itemLabel="Usado" />
+						</p:selectOneMenu>
+					<p:outputLabel value="Tempo de uso (em meses):" for="tempo-de-uso" /> 
+					  <p:inputText maxlength="4" id="tempo-de-uso" required="true" value="#{patrimonioMB.patrimonio.tempo_de_uso}" 
+								 style=" width:80px" />
+					<p:outputLabel value="Turnos de 8hrs:"      /> 
+  						<p:selectOneMenu value="#{patrimonioMB.patrimonio.turnos_de_trabalho}">
+							<f:selectItem itemValue="1" itemLabel="1 turno" />
+							<f:selectItem itemValue="2" itemLabel="2 turnos" />
+							<f:selectItem itemValue="3" itemLabel="3 turnos" />
+						</p:selectOneMenu>
+					<p:outputLabel value="% Residual:" for="residual" />
+						<p:inputText  maxlength="10" id="residual" required="true" value="#{patrimonioMB.patrimonio.perc_residual}" style="text-align:right; width:80px">
+							<f:convertNumber minFractionDigits="2"/>
+						</p:inputText>
+					<p:outputLabel value="Departamento:" for="departamento" /> 
+					  <p:inputText maxlength="5" id="departamento" required="true" value="#{patrimonioMB.patrimonio.dep_sigla}"
+ 								 	style=" width:80px" />
+
+					<h:commandButton value="Gravar" action="#{patrimonioMB.actionGravar}" />
+					<h:link outcome="patrimonio_lista_cadastro.xhtml?faces-redict=true" value="VOLTAR"/>
+				</p:panelGrid>
+			</h:form>
+		</div>
+	</h:body>
+</html>

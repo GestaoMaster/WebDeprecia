@@ -1,0 +1,31 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	lang="en"> 
+
+	<h:head>
+		<meta charset="UTF-8" />
+  		<title>WebDeprecia - Relatório de Baixados</title>
+  		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
+	</h:head>
+	<h:body>
+		<div class="container">
+	        <img src="logo.png" />
+			<h4  class="bg-danger" style="color:blue;">Relatório de Baixados</h4>
+			<h:form>
+				<p:panelGrid columns="2">
+	  				<p:outputLabel value="Tipo De Impressão:" for="tipo-arquivo-baixados" />
+	  				<p:selectOneRadio id="tipo-arquivo-baixados" value="#{patrimonioMB.tipoExporterSelecionado}"
+	  					required="true" style="margin-left: 25px;">
+	  					<f:selectItems value="#{patrimonioMB.tiposExporter}" var="item" 
+	  						itemLabel="#{item.descricao}" itemValue="#{item}" />
+	  				</p:selectOneRadio>	  				
+					<p:commandButton value="Imprimir" ajax="false" action="#{patrimonioMB.downloadRelatorioBensPatrimoniais}" />
+					<p:link value="Voltar" outcome="index.xhtml?faces-redirect=true" />
+	  			</p:panelGrid>
+			</h:form>
+		</div>
+	</h:body>
+</html>

@@ -1,0 +1,75 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	lang="en"> 
+  
+	<h:head>
+		<meta charset="UTF-8" />
+  		<title>WebDeprecia - Lista de Patrimônios</title>
+  		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
+	</h:head>
+	<div class="container">
+        <img src="logo.png" />
+		<h4  class="bg-danger" style="color:blue;">Lista de Patrimônios</h4>
+	</div>
+	<h:body>
+    	<h:form>
+			<p:messages id="messages" />
+			<h:commandButton  value="Voltar" icon="ui-icon-star" style="margin-left:103px" 
+            	action="index" >
+            </h:commandButton>
+			<p:dataTable value="#{patrimonioMB.selectAll}" var="objPatrimonio" style="margin-left:103px"
+			             paginator="true" rows="5" paginatorPosition="bottom">  
+				<p:column headerText="nº" style="width:70px; max-width: 70px; min-width: 70px"
+                           sortBy="#{objPatrimonio.numero}" filterBy="#{objPatrimonio.numero}" filterStyle="max-width: 50px; min-width: 50px;">
+					<p:outputLabel value="#{objPatrimonio.numero}" />
+				</p:column>
+				<p:column headerText="Descrição" style="width:250px; max-width: 250px; min-width: 250px"
+                           sortBy="#{objPatrimonio.descricao}" filterBy="#{objPatrimonio.descricao}" filterStyle="max-width: 230px; min-width: 230px;">
+					<p:outputLabel value="#{objPatrimonio.descricao}" />
+				</p:column>
+				<p:column headerText="Marca" style="width:150px; max-width: 150px; min-width: 150px"
+                           sortBy="#{objPatrimonio.marca}" filterBy="#{objPatrimonio.marca}" filterStyle="max-width: 130px; min-width: 130px;">
+					<p:outputLabel value="#{objPatrimonio.marca}" />
+				</p:column>
+				<p:column headerText="Dep." style="width:100px; max-width: 100px; min-width: 100px"
+                           sortBy="#{objPatrimonio.dep_sigla}" filterBy="#{objPatrimonio.dep_sigla}" filterStyle="max-width: 80px; min-width: 80px;">
+					<p:outputLabel value="#{objPatrimonio.dep_sigla}" />
+				</p:column>
+				<p:column headerText="Status" style="width:100px; max-width: 100px; min-width: 100px"
+                           sortBy="#{objPatrimonio.status}" filterBy="#{objPatrimonio.status}" filterStyle="max-width: 80px; min-width: 80px;">
+					<p:outputLabel value="#{objPatrimonio.status}" />
+				</p:column>
+				<p:column style="width: 70px; max-width: 70px; min-width: 70px">
+				    <p:commandLink value="Reabrir" action="#{patrimonioMB.actionReabrir}" ajax="false">
+				    	<f:setPropertyActionListener value="#{objPatrimonio.numero}" 
+			    			target="#{patrimonioMB.patrimonio.numero}"/>
+			    			
+			    		<p:confirm header="WebDeprecia" icon="ui-icon-alert"
+			    			message="Colocar ativo novamente o bem patrimonial?" />
+			    	</p:commandLink>
+				</p:column>
+				<p:column style="width: 70px; max-width: 70px; min-width: 70px">
+				    <h:commandLink value="Baixar" action="patrimonio_baixar.xhmtl?faces-redict=true">
+				    	<f:setPropertyActionListener value="#{objPatrimonio}" 
+				    		target="#{patrimonioMB.patrimonio}"/>
+			    	</h:commandLink>
+				</p:column>
+				<p:column style="width: 70px; max-width: 70px; min-width: 70px">
+				    <h:commandLink value="Depreciar" action="patrimonio_depreciar.xhmtl?faces-redict=true">
+				    	<f:setPropertyActionListener value="#{objPatrimonio}" 
+				    		target="#{patrimonioMB.patrimonio}"/>
+			    	</h:commandLink>
+				</p:column>
+			</p:dataTable>
+			
+			<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+		        <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+		        <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+		    </p:confirmDialog>
+			
+		</h:form>
+	</h:body>
+</html>

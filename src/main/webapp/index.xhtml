@@ -1,0 +1,49 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	lang="en"> 
+
+	<h:head>
+  		<title>WebDeprecia - Menu</title>
+  		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
+  		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	</h:head>
+	<h:body>
+		<h:form id="form-principal">
+			
+			<p:growl id="messages" />
+		
+			<div class="container">
+				<img src="logo.png" />
+			 	<h4  class="bg-danger" style="color:blue;">Menu principal</h4>
+	   		</div>
+	
+			<div class="container">
+	  			<ul class="nav nav-pills">
+	    			<li class="dropdown"> <a class="dropdown-toggle" data-toggle="dropdown" href="#">Patrimônios<span class="caret"></span></a>
+	      				<ul class="dropdown-menu">
+	        				<li><a href="patrimonio_lista_cadastro.xhtml?faces-redict=true">Cadastros</a></li>
+	        				<li role="presentation" class="divider"></li>
+	        				<li><a href="patrimonio_lista_baixas.xhtml?faces-redict=true">Efetuar/reabrir baixas</a></li>
+	      				</ul>
+	    			</li>
+	    			<li class="dropdown"> <a class="dropdown-toggle" data-toggle="dropdown" href="#">Relatórios<span class="caret"></span></a>
+	      				<ul class="dropdown-menu">
+	        				<li>
+	        					<p:link outcome="relatorios_baixados.xhtml?faces-redirect=true" value="Baixados" />
+	        				</li>
+	        				<li role="presentation" class="divider"></li>
+	        				<li>
+	        					<p:link outcome="relatorios_ativos.xhtml?faces-redirect=true" value="Ativos"/>
+	        				</li>
+	      				</ul>
+	    			</li>
+	    			<li><a href="departamento_lista.xhtml?faces-redict=true">Departamentos</a></li>
+	    			<li><a href="sobre.xhtml?faces-redict=true">Sobre</a></li>
+	  			</ul>
+	  		</div>
+  		</h:form>
+	</h:body>
+</html>

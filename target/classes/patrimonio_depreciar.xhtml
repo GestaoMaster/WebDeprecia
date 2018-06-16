@@ -1,0 +1,61 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	lang="en"> 
+
+	<h:head>
+		<meta charset="UTF-8" />
+  		<title>WebDeprecia - Calcular depreciação</title>
+  		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
+	</h:head>
+	<h:body>
+		<div class="container">
+	        <img src="logo.png" />
+			<h4  class="bg-danger" style="color:blue;">Calcular depreciação</h4>
+			<h:form>
+				<p:messages id="msg" closable="true" />
+				<h:inputHidden value="#{patrimonioMB.patrimonio.numero}"/>
+				<p:panelGrid columns="2">
+					<p:outputLabel value="Tipo do bem:"/>
+					  <p:inputText value="#{patrimonioMB.patrimonio.tipo_do_bem}" style="width:180px" readonly="true"/>
+					<p:outputLabel value="Descrição:"/>
+					  <p:inputText value="#{patrimonioMB.patrimonio.descricao}" style="width:300px" readonly="true"/>
+					<p:outputLabel value="Marca:"/>
+					  <p:inputText value="#{patrimonioMB.patrimonio.marca}" style="width:250px" readonly="true"/>
+					<p:outputLabel value="Preço de Aquisição:"/> 
+					  <p:inputText value="#{patrimonioMB.patrimonio.preco_compra}" style="text-align:right"> 
+						  <f:convertNumber minFractionDigits="2"/>
+					  </p:inputText>
+					<p:outputLabel value="Data da Aquisição:"/>  
+					  <p:calendar value="#{patrimonioMB.patrimonio.data_compra}" style="width:80px" />
+					<p:outputLabel value="Vida útil (em anos):"/>
+					  <p:inputText value="#{patrimonioMB.patrimonio.vida_util}" style="width:50px" />
+					<p:outputLabel value="Situação do bem:"/>
+					  <p:inputText value="#{patrimonioMB.patrimonio.situacao_do_bem}" style="width:80px" />
+					<p:outputLabel value="Tempo de uso (em meses):"/>
+					  <p:inputText value="#{patrimonioMB.patrimonio.tempo_de_uso}" style="width:80px" />
+					<p:outputLabel value="Turnos de 8hrs:"/>
+					  <p:inputText value="#{patrimonioMB.patrimonio.turnos_de_trabalho}" style="width:40px" />
+					<p:outputLabel value="% Residual:"/>
+					  <p:inputText  value="#{patrimonioMB.patrimonio.perc_residual}" style="text-align:right; width:80px">
+					  	 <f:convertNumber minFractionDigits="2"/>
+					  </p:inputText>
+					<p:outputLabel value="Data da baixa/venda:" for="data-da-baixa"/>  
+					  <p:calendar id="data-da-baixa" required="true" value="#{patrimonioMB.patrimonio.baixa_data_ou_venda}"
+								 style="width:80px" />
+					<p:outputLabel value="Preço de venda:"  /> 
+					  <p:inputText value="#{patrimonioMB.patrimonio.baixa_valor_da_venda}" style="text-align:right"> 
+						 <f:convertNumber minFractionDigits="2"/>
+					  </p:inputText>
+					
+					<p:commandButton styleClass="bt" value="CALCULAR" action="#{patrimonioMB.actionDeprecia}"/>
+
+					<h:link outcome="patrimonio_lista_baixas.xhtml" value="VOLTAR"/>
+
+				</p:panelGrid>
+			</h:form>
+		</div>
+	</h:body>
+</html>

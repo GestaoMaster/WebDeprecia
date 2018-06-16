@@ -1,0 +1,36 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	lang="en"> 
+
+	<h:head>
+		<meta charset="UTF-8" />
+  		<title>WebDeprecia - Cadastro de Departamentos</title>
+  		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
+	</h:head>
+	<h:body>
+		<div class="container">	        
+	        <img src="logo.png" />
+			<h4  class="bg-danger" style="color:blue;">Cadastro de departamento</h4>
+			<h:form>
+				<p:messages id="msg" closable="true" />
+				<h:inputHidden value="#{departamentoMB.departamento.id}" />
+				<p:panelGrid columns="2">
+					<p:outputLabel value="Sigla:" for="sigla" />
+					<p:inputText maxlength="5" id="sigla" required="true" value="#{departamentoMB.departamento.sigla}"
+								 style=" width:80px" />
+					<p:outputLabel value="Nome:" for="nome" />
+					<p:inputText maxlength="50" id="nome" required="true" value="#{departamentoMB.departamento.nome}" 
+								 style="width:300px"/>
+					<p:outputLabel value="Responsavel:" for="respon" />
+					<p:inputText maxlength="30" id="respon" required="true" value="#{departamentoMB.departamento.responsavel}" 
+								 style="width:250px"/>
+					<h:commandButton value="Gravar" action="#{departamentoMB.actionGravar}" />
+   					<h:link outcome="departamento_lista.xhtml?faces-redict=true" value="VOLTAR"/>
+				</p:panelGrid>
+			</h:form>
+		</div>
+	</h:body>
+</html>
